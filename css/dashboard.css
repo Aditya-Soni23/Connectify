@@ -737,39 +737,7 @@ body{
                     0 0 120px rgba(255,215,0,0.35);
                     
                     }
-                    .cardGlow{
-
-                        position:absolute;
-                        top:-100%;
-                        left:-50%;
-                        
-                        width:200%;
-                        height:300%;
-                        
-                        background:linear-gradient(
-                        120deg,
-                        transparent,
-                        rgba(255,215,0,0.15),
-                        transparent
-                        );
-                        
-                        transform:rotate(25deg);
-                        
-                        animation:shineMove 6s linear infinite;
-                        
-                        }
-                        
-                        @keyframes shineMove{
-                        
-                        0%{
-                        transform:translateX(-100%) rotate(25deg);
-                        }
-                        
-                        100%{
-                        transform:translateX(100%) rotate(25deg);
-                        }
-                        
-                        }
+                 
                         .profileLeft{
 
                             width:260px;
@@ -957,8 +925,8 @@ body{
 
                                     position:absolute;
                                     
-                                    bottom:20px;
-                                    right:20px;
+                                    bottom:25px;
+                                    left:60px;
                                     
                                     display:flex;
                                     gap:8px;
@@ -1041,25 +1009,6 @@ body{
     -webkit-text-fill-color: transparent;
     font-weight: 800;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
