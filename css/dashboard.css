@@ -1,0 +1,1248 @@
+html{
+    scroll-behavior:smooth;
+    }
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:#0b0b12;
+    color:white;
+    }
+    
+    .dashboard {
+        display: flex;
+        min-height: 100vh; /* Changed from height to min-height */
+        align-items: flex-start; /* Keeps the sidebar from stretching weirdly */
+    }
+    
+    /* SIDEBAR */
+    
+    .sidebar {
+        width: 230px;
+        background: #11111a;
+        padding: 30px 20px;
+        
+        /* Add these three lines */
+        position: sticky;
+        top: 0;
+        height: 100vh; 
+        box-sizing: border-box; /* Ensures padding doesn't push height past 100vh */
+    }
+    
+    .logoArea{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:40px;
+    }
+    
+    .logo{
+    width:35px;
+    }
+    
+    .menu{
+    list-style:none;
+    padding:0;
+    }
+    
+    .menu li{
+    padding:12px;
+    margin-bottom:8px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#bbb;
+    transition:.2s;
+    }
+    
+    .menu li:hover{
+    background:#1a1a28;
+    color:white;
+    }
+    
+    .menu .active{
+    background:linear-gradient(90deg,#d4af37,#ffd700);
+    color:black;
+    font-weight:600;
+    }
+    
+    
+    /* MAIN */
+    
+    .main{
+    flex:1;
+    padding:30px;
+    }
+    
+    
+    /* TOPBAR */
+    
+    .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    }
+    
+    .userProfile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    position:relative;
+    }
+    
+    .userPic{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid #d4af37;
+    }
+    
+    #userName{
+    font-weight:500;
+    }
+    
+    
+    /* DROPDOWN */
+    
+    .profileDropdown{
+    position:absolute;
+    top:50px;
+    right:0;
+    
+    background:#161622;
+    
+    border-radius:12px;
+    
+    padding:10px;
+    
+    display:none;
+    
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    }
+    
+    .profileDropdown button{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    padding:8px 15px;
+    }
+    
+    .profileDropdown button:hover{
+    color:#ffd700;
+    }
+    
+    
+    /* PANELS */
+    
+    .welcomePanel{
+    background:linear-gradient(
+    135deg,
+    rgba(35,35,60,0.8),
+    rgba(10,10,20,0.95)
+    );
+    
+    padding:35px;
+    border-radius:20px;
+    margin-bottom:40px;
+    
+    box-shadow:0 20px 50px rgba(0,0,0,0.6);
+    }
+    
+    
+    /* QUICK ACTIONS */
+    
+    .actionsGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    }
+    
+    .actionCard{
+        padding:28px;
+        border-radius:20px;
+        
+        background:linear-gradient(
+        145deg,
+        rgba(30,30,50,0.85),
+        rgba(15,15,35,0.95)
+        );
+        
+        backdrop-filter:blur(10px);
+        
+        border:1px solid rgba(255,255,255,0.05);
+        
+        cursor:pointer;
+        
+        position:relative;
+        
+        transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s,
+        border .35s;
+        
+        box-shadow:
+        0 10px 30px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        
+        /* glowing border effect */
+        .actionCard::before{
+        content:"";
+        position:absolute;
+        inset:-1px;
+        border-radius:20px;
+        
+        background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,215,0,0.4),
+        transparent
+        );
+        
+        opacity:0;
+        transition:.4s;
+        pointer-events:none;
+        }
+        
+        
+        /* hover animation */
+        .actionCard:hover{
+        
+        transform:translateY(-8px) scale(1.035);
+        
+        border:1px solid rgba(255,215,0,0.3);
+        
+        box-shadow:
+        0 25px 70px rgba(0,0,0,0.8),
+        0 0 40px rgba(255,215,0,0.15);
+        
+        }
+        
+        .actionCard:hover::before{
+        opacity:1;
+        }
+        
+        
+        /* title styling */
+        .actionCard h3{
+        
+        margin-top:0;
+        
+        font-weight:600;
+        
+        letter-spacing:.5px;
+        
+        background:linear-gradient(
+        90deg,
+        #ffd700,
+        #ffcc33
+        );
+        
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        
+        }
+        
+        
+        /* subtle description text */
+        .actionCard p{
+        
+        color:#bbb;
+        
+        font-size:14px;
+        
+        line-height:1.5;
+        
+        margin-top:6px;
+        
+        }
+    /* PROFILE BUILDER */
+
+.profileSection{
+
+    margin-top:60px;
+    
+    }
+    
+    .profileBuilder{
+    
+    display:grid;
+    
+    grid-template-columns:1fr 1fr;
+    
+    gap:40px;
+    
+    margin-top:20px;
+    
+    }
+    
+    
+    /* FORM */
+    
+    .profileForm{
+    
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    
+    }
+    
+    .profileForm input,
+    .profileForm textarea{
+    
+    padding:12px;
+    
+    background:#151520;
+    
+    border:none;
+    
+    border-radius:10px;
+    
+    color:white;
+    
+    }
+    
+    .profileForm textarea{
+    
+    height:80px;
+    
+    resize:none;
+    
+    }
+    
+    .profileForm button{
+    
+    margin-top:10px;
+    
+    padding:12px;
+    
+    background:linear-gradient(90deg,#d4af37,#ffd700);
+    
+    border:none;
+    
+    border-radius:10px;
+    
+    cursor:pointer;
+    
+    font-weight:600;
+    
+    }
+    
+    
+    /* PROFILE CARD */
+    .profileCardPreview{
+
+        width:360px;
+        
+        background:linear-gradient(
+        145deg,
+        rgba(12,12,18,0.95),
+        rgba(6,6,10,0.98)
+        );
+        
+        border-radius:26px;
+        
+        padding:35px 30px;
+        
+        text-align:center;
+        
+        position:relative;
+        
+        overflow:hidden;
+        
+        border:1px solid rgba(255,215,0,0.2);
+        
+        box-shadow:
+        0 30px 90px rgba(0,0,0,0.9),
+        0 0 40px rgba(255,215,0,0.15);
+        
+        transition:.35s;
+        
+        }
+        
+        .profileCardPreview:hover{
+        
+        transform:translateY(-6px) scale(1.02);
+        
+        box-shadow:
+        0 40px 120px rgba(0,0,0,0.9),
+        0 0 60px rgba(255,215,0,0.35);
+        
+        }
+    
+        .previewPic{
+
+            width:95px;
+            height:95px;
+            
+            border-radius:50%;
+            
+            border:3px solid gold;
+            
+            margin-bottom:10px;
+            
+            box-shadow:0 0 20px rgba(255,215,0,0.4);
+            
+            }
+    
+    .previewTags{
+    
+    margin-top:10px;
+    
+    }
+    
+    .previewTags span{
+
+        display:inline-block;
+        
+        padding:5px 10px;
+        
+        margin:4px;
+        
+        border-radius:8px;
+        
+        font-size:12px;
+        
+        color:white;
+        
+        }
+    
+    .username{
+
+        color:#aaa;
+        font-size:14px;
+        margin-bottom:20px;
+        
+        }
+        .previewLinks{
+
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            
+            margin-top:6px;
+            
+            }
+            
+            .previewLinks a{
+            
+            padding:6px 12px;
+            
+            border-radius:8px;
+            
+            font-size:12px;
+            
+            text-decoration:none;
+            
+            background:black;
+            
+            color:gold;
+            
+            border:1px solid gold;
+            
+            box-shadow:0 0 8px rgba(255,215,0,0.5);
+            
+            transition:.2s;
+            
+            }
+            
+            .previewLinks a:hover{
+            
+            background:gold;
+            color:black;
+            
+            box-shadow:0 0 16px rgba(255,215,0,0.8);
+            
+            }
+
+    .linkPopup{
+
+        position:fixed;
+        top:0;
+        left:0;
+        
+        width:100%;
+        height:100%;
+        
+        background:rgba(0,0,0,0.7);
+        
+        display:none;
+        
+        justify-content:center;
+        align-items:center;
+        
+        z-index:999;
+        
+        }
+        
+        .popupBox{
+        
+        background:#11111a;
+        
+        padding:30px;
+        
+        border-radius:20px;
+        
+        width:350px;
+        
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        
+        box-shadow:0 20px 60px rgba(0,0,0,0.8);
+        
+        }
+        
+        .popupBox input{
+        
+        padding:10px;
+        
+        background:#1b1b28;
+        
+        border:none;
+        
+        border-radius:8px;
+        
+        color:white;
+        
+        }
+        
+        .popupButtons{
+        
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+        
+        }
+        
+        .popupButtons button{
+        
+        flex:1;
+        
+        padding:10px;
+        
+        border:none;
+        
+        border-radius:10px;
+        
+        cursor:pointer;
+        
+        background:linear-gradient(90deg,#d4af37,#ffd700);
+        
+        }
+
+        .profileSectionBlock{
+
+            text-align:left;
+            margin-top:18px;
+            
+            }
+            
+            .profileSectionBlock h4{
+            
+            font-size:13px;
+            
+            letter-spacing:1px;
+            
+            color:#ffd700;
+            
+            margin-bottom:6px;
+            
+            text-transform:uppercase;
+            
+            }
+
+
+            .viewProfileSection{
+
+                margin-top:80px;
+                
+                }
+                
+                .profileShowcase{
+                
+                display:flex;
+                justify-content:center;
+                
+                margin-top:30px;
+                
+                }
+
+                
+                .viewPic{
+
+                    width:120px;
+                    height:120px;
+                    
+                    border-radius:50%;
+                    
+                    border:4px solid gold;
+                    
+                    box-shadow:
+                    0 0 30px rgba(255,215,0,0.7),
+                    0 0 60px rgba(255,215,0,0.3);
+                    
+                    margin-bottom:10px;
+                    
+                    }
+
+                    .avatarWrapper{
+                        position:relative;
+                        width:150px;
+                        height:150px;
+                        }
+                        
+                        .viewPic{
+                        width:150px;
+                        height:150px;
+                        border-radius:50%;
+                        object-fit:cover;
+                        }
+                        
+                        .avatarDecoration{
+                        position:absolute;
+                        pointer-events:none;
+                        background-size:contain;
+                        background-repeat:no-repeat;
+                        background-position:center;
+                        }
+
+                    .viewBlock h3{
+
+                        color:#ffd700;
+                        
+                        font-size:14px;
+                        
+                        letter-spacing:2px;
+                        
+                        margin-bottom:6px;
+                        
+                        text-transform:uppercase;
+                        
+                        }
+                .viewUsername{
+                
+                color:#aaa;
+                margin-bottom:15px;
+                
+                }
+                
+                .divider{
+                
+                width:80%;
+                height:1px;
+                
+                background:rgba(255,215,0,0.3);
+                
+                margin:20px auto;
+                
+                }
+                
+                .viewBlock{
+                
+                text-align:left;
+                margin-top:20px;
+                
+                }
+                
+                .viewBlock h3{
+                
+                color:#ffd700;
+                font-size:14px;
+                letter-spacing:1px;
+                
+                margin-bottom:8px;
+                
+                }
+                
+                .viewTags span{
+                
+                padding:6px 12px;
+                margin:4px;
+                
+                border-radius:10px;
+                
+                display:inline-block;
+                
+                font-size:13px;
+                
+                color:white;
+                
+                }
+                
+                .viewLinks a{
+                
+                display:inline-block;
+                
+                padding:8px 14px;
+                
+                margin:6px;
+                
+                background:black;
+                
+                color:gold;
+                
+                border:1px solid gold;
+                
+                border-radius:10px;
+                
+                text-decoration:none;
+                
+                box-shadow:0 0 10px rgba(255,215,0,0.5);
+                
+                }
+                
+                .viewLinks a:hover{
+                
+                background:gold;
+                color:black;
+                
+                }
+
+                .bigProfileCard{
+
+                    width:900px;
+                    height:360px;
+                    
+                    display:flex;
+                    gap:40px;
+                    
+                    padding:40px;
+                    position: relative;
+                    
+                    border-radius:28px;
+                    
+                    background: linear-gradient(135deg, #0a0f2f, #001f5c, #0047b3, #ff6f91);
+                    position:relative;
+                    overflow:hidden;
+                    
+                    border:1px solid rgba(255,215,0,0.25);
+                    
+                    box-shadow:
+                    0 30px 120px rgba(0,0,0,0.9),
+                    0 0 80px rgba(255,215,0,0.15);
+                    
+                    transition:.35s;
+                    
+                    }
+                    
+                    .bigProfileCard:hover{
+                    
+                    transform:translateY(-8px) scale(1.02);
+                    
+                    box-shadow:
+                    0 40px 160px rgba(0,0,0,0.9),
+                    0 0 120px rgba(255,215,0,0.35);
+                    
+                    }
+                    .cardGlow{
+
+                        position:absolute;
+                        top:-100%;
+                        left:-50%;
+                        
+                        width:200%;
+                        height:300%;
+                        
+                        background:linear-gradient(
+                        120deg,
+                        transparent,
+                        rgba(255,215,0,0.15),
+                        transparent
+                        );
+                        
+                        transform:rotate(25deg);
+                        
+                        animation:shineMove 6s linear infinite;
+                        
+                        }
+                        
+                        @keyframes shineMove{
+                        
+                        0%{
+                        transform:translateX(-100%) rotate(25deg);
+                        }
+                        
+                        100%{
+                        transform:translateX(100%) rotate(25deg);
+                        }
+                        
+                        }
+                        .profileLeft{
+
+                            width:260px;
+                            
+                            display:flex;
+                            flex-direction:column;
+                            align-items:center;
+                            justify-content:center;
+                            
+                            border-right:1px solid rgba(255,215,0,0.2);
+                            
+                            }
+                            
+                            .profileRight{
+                            
+                            flex:1;
+                            
+                            display:flex;
+                            flex-direction:column;
+                            justify-content:center;
+                            
+                            gap:18px;
+                            
+                            }
+
+                            .storeSection{
+                                margin-top:80px;
+                            }
+                            
+                            .storeSection h2{
+                                color:#ffd700;
+                                margin-bottom:15px;
+                            }
+                            
+                            .storeSection p{
+                                color:white;
+                                margin-bottom:25px;
+                            }
+                            
+                            .storeGrid{
+                                display:grid;
+                                grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                                gap:25px;
+                            }
+                            
+                            .storeItem{
+                                background: radial-gradient(circle at top, rgba(247, 37, 133, 0.35), transparent 40%),
+            linear-gradient(135deg, #14001f, #3a0ca3, #7209b7, #f72585);
+                                padding:25px;
+                                border-radius:20px;
+                                text-align:center;
+                                color:white;
+                                box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+                                transition: transform .3s, box-shadow .3s;
+                            }
+                            
+                            .storeItem:hover{
+                                transform: translateY(-5px) scale(1.03);
+                                box-shadow: 0 20px 70px rgba(255,215,0,0.5);
+                            }
+                            
+                            .storeItem h3{
+                                margin-top:10px;
+                                color:#ffd700;
+                            }
+                            
+                            .storeItem p{
+                                font-size:13px;
+                                color:#ddd;
+                            }
+                            
+                            .storeItem button{
+                                margin-top:12px;
+                                padding:10px 18px;
+                                border:none;
+                                border-radius:12px;
+                                background:gold;
+                                color:black;
+                                font-weight:600;
+                                cursor:pointer;
+                                transition:.2s;
+                            }
+                            
+                            .storeItem button:hover{
+                                background:#ffd700;
+                                transform:scale(1.05);
+                            }
+                            /* Example: Blue Nitro */  
+                            .premiumBadge{
+
+                                position:relative;
+                                
+                                background:black;
+                                color:white;
+                                
+                                padding:10px 22px;
+                                
+                                border-radius:12px;
+                                
+                                border:2px solid gold;
+                                
+                                font-weight:700;
+                                font-size:16px;
+                                letter-spacing:1px;
+                                
+                                box-shadow:
+                                0 0 10px gold,
+                                0 0 20px gold,
+                                0 0 35px rgba(255,215,0,0.8);
+                                
+                                text-transform:uppercase;
+                                
+                                overflow:hidden;
+                                
+                                animation: badgeGlow 3s ease-in-out infinite;
+                                
+                                }
+                                
+                                /* GOLDEN SHINE EFFECT */
+                                
+                                .premiumBadge::before{
+                                
+                                content:"";
+                                
+                                position:absolute;
+                                
+                                top:0;
+                                left:-75%;
+                                
+                                width:50%;
+                                height:100%;
+                                
+                                background:linear-gradient(
+                                120deg,
+                                transparent,
+                                rgba(255,255,255,0.8),
+                                transparent
+                                );
+                                
+                                transform:skewX(-20deg);
+                                
+                                animation: shineMove 4s infinite;
+                                
+                                }
+                                
+                                /* GLOW PULSE */
+                                
+                                @keyframes badgeGlow{
+                                
+                                0%{
+                                box-shadow:
+                                0 0 8px gold,
+                                0 0 18px gold;
+                                }
+                                
+                                50%{
+                                box-shadow:
+                                0 0 18px gold,
+                                0 0 40px gold;
+                                }
+                                
+                                100%{
+                                box-shadow:
+                                0 0 8px gold,
+                                0 0 18px gold;
+                                }
+                                
+                                }
+                                
+                                /* SHINE SWEEP */
+                                
+                                @keyframes shineMove{
+                                
+                                0%{
+                                left:-75%;
+                                }
+                                
+                                100%{
+                                left:130%;
+                                }
+                                
+                                }
+
+                                .viewBadges{
+
+                                    position:absolute;
+                                    
+                                    bottom:20px;
+                                    right:20px;
+                                    
+                                    display:flex;
+                                    gap:8px;
+                                    
+                                    z-index:5;
+                                    
+                                    }
+
+                                    /* THE PREMIUM CONTAINER */
+.premiumPanel {
+    position: relative;
+    padding: 3px; /* This creates the border thickness */
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* THE ROTATING BORDER LIGHT */
+.premiumPanel::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(
+        transparent, 
+        #d4af37, 
+        #ffd700, 
+        transparent 30%
+    );
+    animation: rotateBorder 4s linear infinite;
+}
+
+/* THE INNER PANEL (GLASS EFFECT) */
+.panelContent {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 40px;
+    border-radius: 22px;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 15, 26, 0.95),
+        rgba(25, 25, 45, 0.9)
+    );
+    backdrop-filter: blur(10px);
+}
+
+/* MOVING MESH BACKGROUND */
+.panelGlow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 111, 145, 0.1), transparent 50%);
+    animation: meshMove 8s ease-in-out infinite alternate;
+}
+
+/* ANIMATIONS */
+@keyframes rotateBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes meshMove {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+.panelContent h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #fff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------
+   CONNECT+ (GLOBAL DIRECTORY)
+----------------------------- */
+
+.connectPlus {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.searchBar {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.searchBar input {
+    width: 60%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: #111;
+    border: 1px solid gold;
+    color: white;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* THE GRID CONTAINER */
+.globalUsersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Larger cards */
+    gap: 30px;
+    justify-items: center;
+}
+
+/* THE MINI SHOWCASE CARD (Matching your reference) */
+.userCard {
+    width: 100%;
+    max-width: 450px;
+    height: 220px; /* Shorter than main preview but same vibe */
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0a0f2f, #001f5c, #0047b3, #ff6f91);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+    transition: .35s;
+    cursor: default;
+}
+
+.userCard:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.9), 0 0 40px rgba(255,215,0,0.25);
+}
+
+/* Left side of the card (Avatar) */
+.cardLeft {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 215, 0, 0.2);
+    padding-right: 15px;
+}
+
+.cardPicSmall {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid gold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Right side of the card (Info & Buttons) */
+.cardRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cardRight h4 {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+}
+
+.cardRight .username {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+.cardActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.cardActions button {
+    flex: 1;
+    padding: 6px 0;
+    font-size: 12px;
+    border-radius: 8px;
+    border: 1px solid gold;
+    background: black;
+    color: gold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cardActions button:hover {
+    background: gold;
+    color: black;
+}
+
+/* Reuse your Shine Animation */
+.userCard::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    width: 200%;
+    height: 300%;
+    background: linear-gradient(120deg, transparent, rgba(255,215,0,0.1), transparent);
+    transform: rotate(25deg);
+    animation: shineMove 6s linear infinite;
+    pointer-events: none;
+}
+/* -----------------------------
+   CONNECT+ FEED STYLING
+----------------------------- */
+
+.globalUsersGrid {
+    display: flex;
+    flex-direction: column; /* Single column */
+    align-items: center;    /* Center the cards */
+    gap: 50px;              /* Space between profiles */
+    padding: 40px 0;
+}
+
+.globalFeedCard {
+    /* Uses your existing .bigProfileCard styles automatically */
+    margin: 0 auto;
+}
+
+/* Styling the Donate/Chat buttons inside the card */
+.cardActions {
+    display: flex;
+    flex-direction: column; /* Stacked vertically looks cleaner for 3 buttons */
+    gap: 8px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 180px; /* Keep them contained */
+}
+
+.cardActions button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid gold;
+    background: rgba(0, 0, 0, 0.7);
+    color: gold;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cardActions button:hover {
+    background: gold;
+    color: black;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
+}

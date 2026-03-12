@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectify | Discover</title>
+    <link rel="stylesheet" href="css/discover.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+
+    <div id="authShield">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar">
+        <button style="background-color: white; cursor: pointer; color: black; font-weight: bolder; border-radius: 10px;" onclick="window.location.href='dashboard.html'">← Back</button>
+        <h2>Community Showcase</h2>
+        <button class="post-trigger" onclick="openPostModal()">Post +</button>
+    </nav>
+
+    <div id="discoverGrid" class="discover-grid">
+        </div>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Showcase Your Art</h3>
+                <span class="close" onclick="closePostModal()">&times;</span>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="drawingCanvas" width="500" height="400"></canvas>
+            </div>
+
+            <div class="toolbar">
+                <input type="color" id="colorPicker" value="#00c6ff">
+                <input type="range" id="sizePicker" min="1" max="50" value="5">
+                <button onclick="setEraser()">Eraser</button>
+                <button onclick="clearCanvas()">Clear</button>
+                <button class="submit-post" onclick="uploadDrawing()">Post Drawing</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/discover.js"></script>
+</body>
+</html>

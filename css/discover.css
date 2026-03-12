@@ -1,0 +1,68 @@
+body {
+    margin: 0; background: #0a0a0a; color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+#authShield {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #0a0a0a; z-index: 9999; display: flex; align-items: center; justify-content: center;
+}
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 30px; background: #111; border-bottom: 1px solid #222;
+}
+
+.post-trigger {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    border: none; color: white; padding: 10px 20px;
+    border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+.discover-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px; padding: 30px;
+}
+
+/* ART CARD */
+.art-card {
+    background: #1a1a1a; border-radius: 15px; overflow: hidden;
+    border: 1px solid #333; transition: 0.3s;
+}
+
+.art-card:hover { transform: translateY(-5px); border-color: #00c6ff; }
+
+.art-img { width: 100%; height: 250px; background: white; object-fit: contain; }
+
+.art-info { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+
+.user-meta { display: flex; align-items: center; gap: 10px; }
+.user-meta img { width: 30px; height: 30px; border-radius: 50%; }
+
+.like-section { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.like-icon { color: #ff4d4d; font-size: 20px; }
+
+/* MODAL & CANVAS */
+.modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+
+.modal-content { background: #111; margin: 5% auto; padding: 20px; width: 540px; border-radius: 15px; text-align: center; }
+
+#drawingCanvas { background: white; border-radius: 10px; cursor: crosshair; touch-action: none; }
+
+.toolbar { margin-top: 15px; display: flex; gap: 10px; justify-content: center; align-items: center; }
+
+.submit-post { background: #43cea2; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.like-icon {
+    color: #555; /* Default grey */
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.like-icon.liked {
+    color: #ff4d4d; /* Red when liked */
+    text-shadow: 0 0 10px #ff4d4d;
+}
+
+.like-section:hover .like-icon {
+    transform: scale(1.2);
+}

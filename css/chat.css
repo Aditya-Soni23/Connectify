@@ -1,0 +1,250 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: white;
+}
+
+.chat-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 350px;
+    background: #111;
+    border-right: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn {
+    background: #222;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.section-label {
+    padding: 10px 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+.request-list, .friends-grid {
+    padding: 0 10px;
+    overflow-y: auto;
+}
+
+.request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.req-btns button {
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* CHAT ITEMS */
+.chat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.chat-item:hover { background: #1a1a1a; }
+.chat-item.active { background: #222; border-left: 4px solid #00c6ff; }
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
+}
+
+/* MAIN CHAT */
+.main-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at center, #111, #050505);
+}
+
+.chat-header {
+    padding: 20px;
+    background: #111;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #222;
+}
+
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 60%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.sent {
+    align-self: flex-end;
+    background: #0072ff;
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.received {
+    align-self: flex-start;
+    background: #222;
+    border-bottom-left-radius: 2px;
+}
+
+.message small {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 3px;
+    opacity: 0.6;
+}
+
+.input-area {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background: #111;
+}
+
+#messageInput {
+    flex: 1;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+#sendBtn {
+    background: #00c6ff;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+/* Update these specific sections in your chat.css */
+
+.msg-content {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.msg-pfp {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.sent .msg-content {
+    flex-direction: row-reverse; /* Put my pfp on the right */
+}
+
+.msg-info p {
+    margin: 2px 0 0 0;
+}
+
+.sent .msg-info {
+    text-align: right;
+}
+
+/* Notification Badge */
+.noti-badge {
+    width: 10px;
+    height: 10px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    margin-left: auto;
+    box-shadow: 0 0 10px #ff4d4d;
+    display: none; /* Shown via JS when needed */
+}
+
+.chat-item span {
+    flex: 1;
+}
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.noti-dot {
+    width: 10px;
+    height: 10px;
+    background: #43cea2; /* Neon Green */
+    border-radius: 50%;
+    margin-left: auto;
+    box-shadow: 0 0 10px #43cea2;
+    display: none; /* Hidden by default */
+}
+
+/* Ensure chat items can align the dot to the right */
+.chat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+    position: relative;
+}
+
+.chat-item span {
+    flex: 1;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectify | Wallpaper Showcase</title>
+    <link rel="stylesheet" href="css/wallpaper.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+
+    <div id="authShield">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar">
+        <button style="background-color: white; cursor: pointer; color: black; font-weight: bolder; border-radius: 10px;" onclick="window.location.href='dashboard.html'">← Back</button>
+        <div class="nav-center">
+            <h2>Wallpaper Showcase</h2>
+            <small style="color: gold; display: block;">Upload the best to earn Credits! 🎁</small>
+        </div>
+        <button class="post-trigger" onclick="openWallpaperModal()">Upload Wallpaper +</button>
+    </nav>
+
+    <div id="wallpaperGrid" class="wallpaper-grid">
+        </div>
+
+    <div id="wallpaperModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share a Wallpaper</h3>
+                <span class="close" onclick="closeWallpaperModal()">&times;</span>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="imageUrlInput" placeholder="Paste Image URL here (https://...)" oninput="previewImage()">
+            </div>
+
+            <div id="urlPreviewContainer">
+                <p id="previewPlaceholder">Image Preview will appear here</p>
+                <img id="urlPreviewImg" src="" style="display:none; width:100%; border-radius:10px; margin-top:10px;">
+            </div>
+
+            <div class="modal-footer">
+                <button class="submit-post" onclick="uploadWallpaper()">Post Wallpaper</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/wallpaper.js"></script>
+</body>
+</html>

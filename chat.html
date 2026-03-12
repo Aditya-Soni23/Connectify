@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectify | Chat</title>
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <button onclick="window.location.href='dashboard.html'" class="back-btn">← Back</button>
+                <h2>Chats</h2>
+            </div>
+
+            <div class="section-label">Friend Requests</div>
+            <div id="requestList" class="request-list">
+                </div>
+
+            <div class="section-label">Messages</div>
+            <div id="friendsGrid" class="friends-grid">
+                <div class="chat-item active" id="item-general" onclick="loadChat('general', 'Connectify General')">
+                    <div class="avatar-sm" style="background: gold;">G</div>
+                    <span>Connectify General</span>
+                </div>
+                </div>
+        </div>
+
+        <div class="main-chat">
+            <div id="chatHeader" class="chat-header">Connectify General</div>
+            
+            <div id="messages" class="messages-container">
+                </div>
+
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Write a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+</body>
+</html>

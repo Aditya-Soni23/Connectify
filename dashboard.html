@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Connectify Dashboard</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logoArea">
+<img src="assets/logo.png" class="logo">
+<h2>Connectify</h2>
+</div>
+
+<ul class="menu">
+<li onclick="scrollToSection('top')" class="active">Home</li>
+<li onclick="scrollToSection('profileSection')">Build Your Profile</li>
+<li onclick="scrollToSection('viewProfileSection')">View Your Profile</li>
+<li onclick="chatteleport()">Chat💬</li>
+<li onclick="scrollToSection('storeSection')">Store</li>
+<li onclick="openSection('connect')">Connect +</li>
+<li onclick="discoverpage()">Discover</li>
+<li onclick="earnpage()">Earn Credits</li>
+</ul>
+
+</div>
+
+
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+<section id="top">
+<div class="topbar">
+
+<h2 id="welcomeText">Welcome</h2>
+
+<div class="userProfile" id="userProfile">
+
+<img id="userPic" class="userPic">
+
+<span id="userName">Loading...</span>
+
+<div class="profileDropdown" id="profileDropdown">
+
+<button onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+</div></section>
+
+
+
+<!-- WELCOME PANEL -->
+
+<div class="welcomePanel premiumPanel">
+    <div class="panelGlow"></div>
+    <div class="panelContent">
+        <h1>Welcome to Connectify</h1>
+        <p>Elevate your digital identity with a premium connection dashboard.</p>
+
+    </div>
+</div>
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="quickActions">
+
+<h2>Get Started</h2>
+
+<div class="actionsGrid">
+
+<div class="actionCard" onclick="discoverpage()">
+<h3>Discover</h3>
+<p>Create or discover creations and like them!</p>
+</div>
+
+<div class="actionCard" onclick="chatteleport()">
+<h3>Chat💬</h3>
+<p>Jump into the global Connectify chat room.</p>
+</div>
+
+<div class="actionCard" onclick="openSection('connect')">
+<h3>Connect +</h3>
+<p>Discover and connect with other amazing profiles.</p>
+</div>
+
+<div class="actionCard" onclick="openSection('viewProfileSection')">
+<h3>View Your Profile</h3>
+<p>Know how others see your profile!</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<section id="profileSection" class="profileSection">
+
+    <h2>Build Your Profile</h2>
+    
+    <div class="profileBuilder">
+    
+    <!-- PROFILE FORM -->
+    
+    <div class="profileForm">
+    
+    
+    <textarea id="bioInput" placeholder="About you"></textarea>
+    
+    <input id="tagsInput" placeholder="Tags (comma separated)">
+    <button type="button" onclick="openLinkPopup()">
+        Links +
+        </button>
+    
+    <button onclick="saveProfile()">Save Profile</button>
+    <h3 style="color: red;">⚠️Make sure to hit the Save button after you make changes!⚠️</h3>
+    
+    </div>
+    
+    
+    <!-- PROFILE PREVIEW -->
+    <div class="profileCardPreview">
+
+        <img id="previewPic" class="previewPic">
+        
+        <h2 id="previewName"></h2>
+        
+        <p id="previewUsername" class="username"></p>
+        
+        
+        <div class="profileSectionBlock">
+        
+        <h4>Description</h4>
+        <p id="previewBio">Your description</p>
+        
+        </div>
+        
+        
+        <div class="profileSectionBlock">
+        
+        <h4>Tags</h4>
+        <div id="previewTags" class="previewTags"></div>
+        
+        </div>
+        
+        
+        <div class="profileSectionBlock">
+        
+        <h4>Links</h4>
+        <div id="previewLinks" class="previewLinks"></div>
+        
+        </div>
+        
+        </div>
+    
+    </div>
+
+    <div id="linkPopup" class="linkPopup">
+
+        <div class="popupBox">
+        
+        <h3>Add Link</h3>
+        
+        <input id="linkName" placeholder="What link? (Discord, Valorant, Instagram)">
+        <input id="linkValue" placeholder="Paste link or ID">
+        
+        <div class="popupButtons">
+        
+        <button onclick="addLink()">Save</button>
+        <button onclick="closeLinkPopup()">Cancel</button>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+    
+    </section>
+
+
+
+
+
+
+    <section id="viewProfileSection" class="viewProfileSection">
+
+        <h2>Your Connectify Profile</h2>
+        
+        <div class="profileShowcase">
+        
+            <div class="bigProfileCard">
+
+                <div class="cardGlow"></div>
+                
+                <div class="profileLeft">
+                
+                    <div class="avatarWrapper">
+
+                        <img id="viewPic" class="viewPic">
+                        
+                        <div id="avatarDecoration" class="avatarDecoration"></div>
+                        
+                        </div>
+                
+                <h1 id="viewName"></h1>
+                
+                <p id="viewUsername" class="viewUsername"></p>
+                
+                </div>
+                
+                <div class="profileRight">
+                
+                <div class="viewBlock">
+                
+                <h3>Description</h3>
+                <p id="viewBio"></p>
+                
+                </div>
+                
+                <div class="viewBlock">
+                
+                <h3>Tags</h3>
+                <div id="viewTags" class="viewTags"></div>
+                
+                </div>
+                
+                <div class="viewBlock">
+                
+                <h3>Links</h3>
+                <div id="viewLinks" class="viewLinks"></div>
+                
+                </div>
+                
+                <div class="viewBlock">
+                    <div class="viewBadges"></div>
+                </div>
+                </div>
+                
+                </div>
+        </div>
+        
+        </section>
+
+<section id="storeSection" class="storeSection">
+
+    <h2>Connectify Store</h2>
+
+    <p style="background-color: rgb(38, 255, 0); color: black; font-weight: bolder; border-radius: 3px;">Your Credits: <span id="userCredits" >10</span></p>
+    <div class="storeGrid">
+
+        <div class="storeItem" data-type="badge" data-name="Premium Member" data-price="1000">
+            
+            <div class="itemPreview">💎</div>
+        
+            <h3>Premium Member</h3>
+        
+            <p>Show an exclusive premium badge on your profile.</p>
+        
+            <button onclick="buyItem(this)">Buy (1000)</button>
+        
+        </div>
+
+        <div class="storeItem" data-type="decoration" data-name="halloween" data-price="1000">
+        
+        <div class="itemPreview">🎃</div>
+        
+        <h3>Halloween Decoration</h3>
+        
+        <p>Spooky avatar decoration.</p>
+        
+        <button onclick="buyDecoration(this)">Buy (1000)</button>
+        
+        </div>
+        
+        
+        <div class="storeItem" data-type="decoration" data-name="beach" data-price="1000">
+        
+        <div class="itemPreview">🏖️</div>
+        
+        <h3>Beach Decoration</h3>
+        
+        <p>Summer vibe avatar decoration.</p>
+        
+        <button onclick="buyDecoration(this)">Buy (1000)</button>
+        
+        </div>
+        
+        
+        <div class="storeItem" data-type="decoration" data-name="cyber" data-price="1000">
+        
+        <div class="itemPreview">⚡</div>
+        
+        <h3>Cyber Decoration</h3>
+        
+        <p>Futuristic cyber avatar frame.</p>
+        
+        <button onclick="buyDecoration(this)">Buy (1000)</button>
+        
+        </div>
+        
+        </div>
+
+</section>
+
+
+
+
+<section id="connect" class="connectPlus">
+    <h2>Connect +</h2>
+    
+    <div class="searchBar">
+        <input type="text" id="userSearch" placeholder="Search by name or username..." oninput="searchUsers()">
+    </div>
+
+    <div id="globalUsersGrid" class="globalUsersGrid">
+        </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
